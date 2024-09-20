@@ -1,7 +1,10 @@
 package com.example.planets;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     ArrayList<Planet> planetsArrayList;
     private MyCustomAdapter customAdapter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,5 +52,16 @@ public class MainActivity extends AppCompatActivity {
         //AdapterView: listview
         listView = findViewById(R.id.listview);
         listView.setAdapter(customAdapter);
+
+
+        //Click listener for listView
+        listView.setOnItemClickListener((parent, view, position, id) ->
+                Toast.makeText(MainActivity.this,
+                    "Plane Name  : " + planetsArrayList.get(position).getPlanetName(),
+                Toast.LENGTH_SHORT).show());
+
+
+
+
     }
 }
